@@ -1,33 +1,17 @@
 """
-growth.py
-=========
-Severity-based growth controller.
-
-Signals
-──────
+signals:
 S1 — Forgetting     (avg BWT below -FORGET_THR)
 S2 — Modal dominance (4-modality gate spread > 1/(n_mod+1); independent,
                       resets gate weights, no contribution to sev_*)
 S3 — BPR plateau    (relative improvement < PLATEAU_REL_DROP)
 S4 — Repr collapse  (mean pairwise cosine > REPR_COLLAPSE_THR)
 S5 — Over-smoothing (layer0 vs layer2 cosine > OVERSMOOTH_THR)
+SO:
+capacity saturated: plateau, oversmooth
+representations collapse / forgetting is high
 
-Severity scores
-──────────────
-sev_width = 0.7·S3 + 0.5·S5 + 0.2·S1 + 0.1·S4   → grow hidden
-  (capacity saturated: plateau, oversmooth)
-sev_depth = 0.7·S4 + 0.5·S1 + 0.2·S5 + 0.1·S3   → grow attention heads
-  (representations collapse / forgetting is high)
-
-NOTE: MGAT's GAT depth (2 layers) is architecture-fixed. "Depth" growth
+NOTE!!!!!!!!!!!!!: MGAT's GAT depth (2 layers) is architecture-fixed. "Depth" growth
 here means growing attention heads, NOT adding GATConv layers.
-
-Growth decision (threshold = cfg.SEV_THRESHOLD)
-─────────────────────────────────────────────────
-sev_width ≥ THR  AND  sev_depth < THR  → grow hidden only
-sev_depth ≥ THR  AND  sev_width < THR  → grow heads only
-both ≥ THR                             → grow both
-both < THR                             → no growth
 
 S2 is independent: it resets the fusion gate weights each time it fires
 but does NOT contribute to sev_width / sev_depth.
