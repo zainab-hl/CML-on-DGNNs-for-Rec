@@ -1,5 +1,4 @@
 """
-train.py — run the full continual learning experiment.
 
 Usage
 -----
