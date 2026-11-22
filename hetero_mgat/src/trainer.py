@@ -1,11 +1,4 @@
-"""
-trainer.py
-==========
-Two-phase epoch training (detached predictor batches + capped Phase-2
-GNN backward), the simpler single-phase baseline epoch, and the
-period-level training wrapper that threads EWC, Fisher accumulation,
-and validation across continual-learning periods.
-"""
+
 from __future__ import annotations
 
 from typing import Dict, List, Optional, Tuple
