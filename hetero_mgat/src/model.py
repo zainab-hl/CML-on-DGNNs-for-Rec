@@ -1,22 +1,4 @@
-"""
-model.py
-========
-Heterogeneous, multi-modal GAT model (user/item/brand, 4 typed edges).
 
-Design note on `encode()`
---------------------------
-The original script closed over module-level globals (T_text_gpu,
-T_image_gpu, ...) cached once at startup. That works in a notebook but
-creates a circular dependency in a package: model.py would need to
-import data.py to get the tensors, while data.py has no reason to know
-about the model.
-
-Instead, `HeteroMGAT.encode(...)` takes an explicit `ItemFeatures`
-bundle (and the graph / user tensors) as arguments. `DataModule` owns
-and caches those tensors; callers (trainer, evaluator) pass them
-through. This keeps model.py a pure "given tensors, produce
-embeddings" module with no knowledge of where the data came from.
-"""
 from __future__ import annotations
 
 from dataclasses import dataclass
