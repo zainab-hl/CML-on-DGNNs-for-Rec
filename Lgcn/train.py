@@ -1,12 +1,3 @@
-"""
-
-Usage
------
-    python train.py
-    python train.py --dataset baby --n-seeds 5
-    python train.py --dataset clothing --hidden-init 64 --k-init 2
-"""
-
 import argparse
 from pathlib import Path
 
