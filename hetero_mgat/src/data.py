@@ -1,16 +1,4 @@
-"""
-data.py
-=======
-Everything related to loading the raw parquet files, building item
-features (PCA-128 text/image, category, meta), the user-history
-lookup, temporal train/valid/test splits, and heterogeneous edge
-indices.
 
-`DataModule` owns the GPU-cached `ItemFeatures` bundle (see model.py)
-and hands it to the model explicitly at encode time — there is no
-import of model.py here, and no reverse import of data.py in model.py
-beyond the `ItemFeatures` dataclass it consumes.
-"""
 from __future__ import annotations
 
 from collections import Counter
