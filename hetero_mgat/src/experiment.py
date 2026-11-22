@@ -1,22 +1,4 @@
-"""
-experiment.py
-=============
-Top-level orchestration: one full continual-learning run of the
-dynamic (EWC + severity-growth) model, the EWC-only ablation, the two
-fixed-capacity baselines (Cumulative-No-EWC, All-at-once), the
-multi-seed loop, and result aggregation / saving.
 
-Usage
------
-    from hetero_mgat.config import Config
-    from hetero_mgat.data import DataModule
-    from hetero_mgat.experiment import Experiment
-
-    cfg = Config()
-    dm = DataModule(cfg)
-    exp = Experiment(cfg, dm)
-    exp.run()
-"""
 from __future__ import annotations
 
 import gc
