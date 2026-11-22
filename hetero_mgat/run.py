@@ -1,17 +1,4 @@
-#!/usr/bin/env python3
-"""
-run.py
-======
-Entry point: builds the Config, loads data via DataModule, and runs the
-full multi-seed Experiment (dynamic model + EWC-only ablation +
-Cumulative-No-EWC + All-at-once baselines).
 
-    python run.py
-    python run.py --seeds 1 --pretrain-epochs 5 --cl-epochs 3   # quick run
-
-Edit `--root`/`--out` (or the Config defaults in src/hetero_mgat/config.py)
-to point at your data location.
-"""
 import argparse
 from pathlib import Path
 
